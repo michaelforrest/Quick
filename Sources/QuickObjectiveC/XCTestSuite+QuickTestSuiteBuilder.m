@@ -39,7 +39,8 @@
     FooSpec/testBar
  */
 + (nullable instancetype)qck_hooked_testSuiteForTestCaseWithName:(nonnull NSString *)name {
-    return [QuickTestSuite selectedTestSuiteForTestCaseWithName:name];
+    QuickTestSuite* result = [QuickTestSuite selectedTestSuiteForTestCaseWithName:name];
+    return result ? result : [self qck_hooked_testSuiteForTestCaseWithName: name]; // try the original one
 }
 
 @end
